@@ -28,4 +28,6 @@ public class ConsoleMessages {
     public static final String ENTER_ID = "Введите id:";
     public static final String EXIT_MESSAGE = "Завершение работы. Данные будут отправлены на сервер";
     public static final String INVALID_COMMAND = "Неверная команда. Попробуйте снова.";
+
+    public static final String ACTIVE_MODE = "Используется активный режим работы клиента.";
 }

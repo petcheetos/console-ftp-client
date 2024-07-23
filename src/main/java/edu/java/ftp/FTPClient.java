@@ -97,6 +97,7 @@ public class FTPClient {
         try {
             serverSocket = enterActiveMode();
             sendCommand("RETR " + remoteFilePath);
+            validateResponse(150, readServerResponse());
             dataSocket = serverSocket.accept();
             return getString(dataSocket);
         } catch (IOException e) {
@@ -182,7 +183,7 @@ public class FTPClient {
         sendCommand("PASV");
         String response = readServerResponse();
 
-        if (!response.startsWith("227 ")) {
+        if (!response.startsWith("2")) {
             throw new IOException("Failed to enter passive mode: " + response);
         }
 

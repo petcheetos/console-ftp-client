@@ -21,7 +21,12 @@ public class ConsoleClientApplication {
     }
 
     public void run() {
-        console.print(ConsoleMessages.DEFAULT_PASSIVE);
+        if (passiveMode) {
+            console.print(ConsoleMessages.DEFAULT_PASSIVE);
+        } else {
+            console.print(ConsoleMessages.ACTIVE_MODE);
+        }
+
         console.print(ConsoleMessages.INPUT_IP);
         String ip = console.readLine();
 
