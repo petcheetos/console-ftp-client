@@ -46,9 +46,40 @@
 public String getDataFromFile(String remoteFilePath, boolean passiveMode);
 public boolean saveDataToFile(String data, String remoteFilePath, boolean passiveMode);
 ```
-находящихся в класcе FTPClient. Адрес клиента в активном режиме по умолчанию задан как **127.0.0.1**, но его можно изменить в том же классе:
+находящихся в класcе **FTPClient**. Адрес клиента в активном режиме по умолчанию задан как **127.0.0.1**, но его можно изменить в том же классе:
 ```java
- private final String clientIPActiveMode = "127.0.0.1";
-```
+ private final String clientIPActiveMode = "127.0.0.1";  
+```  
+  
+  
+### Инструкция по сборке и запуску проекта: 
+
+#### Клонирование репозитория
+Выполните следующую команду, чтобы клонировать репозиторий с GitHub:
+`git clone https://github.com/petcheetos/console-ftp-client.git`
+
+#### Переход в директорию, куда был клонирован репозиторий
+`cd console-ftp-client`
+
+#### Компиляция проекта 
+Создайте директорию для скомпилированных классов
+`mkdir -p out`
+
+Скомпилируйте все классы
+`javac -d out src/main/java/edu/java/Main.java src/main/java/edu/java/ConsoleClientApplication.java src/main/java/edu/java/commands/*.java src/main/java/edu/java/console/*.java src/main/java/edu/java/ftp/*.java src/main/java/edu/java/utils/*.java src/main/java/edu/java/entities/*.java src/main/java/edu/java/services/*.java`
+или
+`javac -d out -sourcepath src/main/java src/main/java/edu/java/Main.java`
+
+#### Создание JAR файла
+Перейдите в директорию с скомпилированными классами
+`cd out`
+
+Объедините классы в исполняемый jar-файл:
+`jar cvfe ConsoleClientApplication.jar Main *.class */*.class`
+`jar cvfe ../ConsoleClientApplication.jar edu.java.Main edu/java/*.class edu/java/commands/*.class edu/java/console/*.class edu/java/ftp/*.class edu/java/utils/*.class edu/java/entities/*.class edu/java/services/*.class`
+
+#### Запуск приложения
+`java -jar ConsoleClientApplication.jar`
+
 
 
