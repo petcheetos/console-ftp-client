@@ -1,13 +1,15 @@
-package edu.java;
+package edu.java.services;
+
+import edu.java.entities.Student;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StudentManager {
+public class StudentService {
     private final HashSet<Student> students;
 
-    public StudentManager(HashSet<Student> students) {
+    public StudentService(HashSet<Student> students) {
         this.students = students;
     }
 
@@ -15,6 +17,10 @@ public class StudentManager {
         Student student = new Student(generateId(), name);
         students.add(student);
         return student;
+    }
+
+    public HashSet<Student> getStudents() {
+        return new HashSet<>(students);
     }
 
     public void removeStudentById(long id) {

@@ -1,4 +1,4 @@
-package edu.java;
+package edu.java.ftp;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package edu.java;
+package edu.java.entities;
 
 public class Student implements Comparable<Student> {
     private final long id;

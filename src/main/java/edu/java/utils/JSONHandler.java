@@ -1,4 +1,6 @@
-package edu.java;
+package edu.java.utils;
+
+import edu.java.entities.Student;
 
 import java.util.HashSet;
 import java.util.regex.Matcher;
