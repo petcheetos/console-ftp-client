@@ -56,30 +56,46 @@ public boolean saveDataToFile(String data, String remoteFilePath, boolean passiv
 
 #### Клонирование репозитория
 Выполните следующую команду, чтобы клонировать репозиторий с GitHub:
-`git clone https://github.com/petcheetos/console-ftp-client.git`
+```bash
+git clone https://github.com/petcheetos/console-ftp-client.git
+```
 
 #### Переход в директорию, куда был клонирован репозиторий
-`cd console-ftp-client`
+```bash
+cd console-ftp-client
+```
 
 #### Компиляция проекта 
 Создайте директорию для скомпилированных классов
-`mkdir -p out`
+```bash
+mkdir -p out
+```
 
 Скомпилируйте все классы
-`javac -d out src/main/java/edu/java/Main.java src/main/java/edu/java/ConsoleClientApplication.java src/main/java/edu/java/commands/*.java src/main/java/edu/java/console/*.java src/main/java/edu/java/ftp/*.java src/main/java/edu/java/utils/*.java src/main/java/edu/java/entities/*.java src/main/java/edu/java/services/*.java`
-или
-`javac -d out -sourcepath src/main/java src/main/java/edu/java/Main.java`
+```bash
+javac -d out -sourcepath src/main/java src/main/java/edu/java/Main.java
+```
 
 #### Создание JAR файла
-Перейдите в директорию с скомпилированными классами
-`cd out`
+Перейдите в директорию с скомпилированными классами:
+```bash
+cd out
+```
 
 Объедините классы в исполняемый jar-файл:
-`jar cvfe ConsoleClientApplication.jar Main *.class */*.class`
-`jar cvfe ../ConsoleClientApplication.jar edu.java.Main edu/java/*.class edu/java/commands/*.class edu/java/console/*.class edu/java/ftp/*.class edu/java/utils/*.class edu/java/entities/*.class edu/java/services/*.class`
+```bash
+jar cvfe ../ConsoleClientApplication.jar edu.java.Main edu/java/*.class edu/java/commands/*.class edu/java/console/*.class edu/java/ftp/*.class edu/java/utils/*.class edu/java/entities/*.class edu/java/services/*.class
+```
 
 #### Запуск приложения
-`java -jar ConsoleClientApplication.jar`
+Перейдите в корневую директорию вашего проекта:
+```bash
+cd ..
+```
+Запустите JAR-файл:
+```bash
+java -jar ConsoleClientApplication.jar
+```
 
 
 
