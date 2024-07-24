@@ -30,4 +30,5 @@ public class ConsoleMessages {
     public static final String INVALID_COMMAND = "Неверная команда. Попробуйте снова.";
 
     public static final String ACTIVE_MODE = "Используется активный режим работы клиента.";
+    public static final String INVALID_FILENAME = "Неверное имя файла. Введите имя файла:";
 }
