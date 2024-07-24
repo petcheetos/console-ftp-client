@@ -61,11 +61,10 @@ public class ConsoleClientApplication {
                     String dataToFile = jsonHandler.serializeStudents(students);
                     if (ftpClient.saveDataToFile(dataToFile, remoteFilePath, passiveMode)) {
                         console.print(ConsoleMessages.DATA_SAVED);
-                        ftpClient.disconnect();
                     } else {
                         console.print(ConsoleMessages.NO_DATA_SAVED);
-                        ftpClient.disconnect();
                     }
+                    ftpClient.disconnect();
                     break;
                 }
             }
