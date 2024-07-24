@@ -44,28 +44,28 @@ public class ConsoleClientApplication {
             console.print(ConsoleMessages.INPUT_FILE_NAME);
             String remoteFilePath = console.readLine();
             String data = ftpClient.getDataFromFile(remoteFilePath, passiveMode);
-            if (data != null) {
-                HashSet<Student> students = jsonHandler.parseData(data);
-                StudentService studentService = new StudentService(students);
-                Commands commands = new Commands(studentService);
-                CommandHandler commandHandler = new CommandHandler(console, commands);
+            while (data == null) {
+                console.print(ConsoleMessages.INVALID_FILENAME);
+                remoteFilePath = console.readLine();
+                data = ftpClient.getDataFromFile(remoteFilePath, passiveMode);
+            }
+            HashSet<Student> students = jsonHandler.parseData(data);
+            StudentService studentService = new StudentService(students);
+            Commands commands = new Commands(studentService);
+            CommandHandler commandHandler = new CommandHandler(console, commands);
 
-                while (true) {
-                    console.print(commands.help());
-                    String command = console.readLine();
-                    if (commandHandler.handleCommand(command)) {
-                        String dataToFile = jsonHandler.serializeStudents(students);
-                        if (ftpClient.saveDataToFile(dataToFile, remoteFilePath, passiveMode)) {
-                            console.print(ConsoleMessages.DATA_SAVED);
-                        } else {
-                            console.print(ConsoleMessages.NO_DATA_SAVED);
-                        }
-                        break;
+            while (true) {
+                console.print(commands.help());
+                String command = console.readLine();
+                if (commandHandler.handleCommand(command)) {
+                    String dataToFile = jsonHandler.serializeStudents(students);
+                    if (ftpClient.saveDataToFile(dataToFile, remoteFilePath, passiveMode)) {
+                        console.print(ConsoleMessages.DATA_SAVED);
+                    } else {
+                        console.print(ConsoleMessages.NO_DATA_SAVED);
                     }
+                    break;
                 }
-            } else {
-                console.printError(ConsoleMessages.NO_DATA_RECEIVED);
-                ftpClient.disconnect();
             }
         } else {
             console.printError(ConsoleMessages.NOT_CONNECTED);
