@@ -1,5 +1,7 @@
 package edu.java.entities;
 
+import java.util.Objects;
+
 public class Student implements Comparable<Student> {
     private final long id;
     private final String name;
@@ -33,5 +35,23 @@ public class Student implements Comparable<Student> {
                 "id = " + id +
                 ", name = '" + name + '\'' +
                 ')';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        if (id != student.id) return false;
+        return Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }
